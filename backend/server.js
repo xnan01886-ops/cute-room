@@ -1,0 +1,18 @@
+import express from 'express'
+
+const app = express()
+const PORT = process.env.PORT || 3001
+
+app.use(express.json())
+
+app.get('/', (_req, res) => {
+  res.json({ app: 'Strawberry', message: 'Backend is running.' })
+})
+
+app.get('/health', (_req, res) => {
+  res.json({ ok: true })
+})
+
+app.listen(PORT, () => {
+  console.log(`Strawberry backend is listening on http://localhost:${PORT}`)
+})
