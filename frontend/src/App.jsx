@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { APP_CONFIG } from "./config";
-import Room, { RoomArt } from "./Room";
+import Room, { initialRoomState } from "./Room";
 
 const starterMessages = [
   { id: 1, role: "assistant", text: "下午好。这里很安静，我在。" },
@@ -202,10 +202,10 @@ function Home({ go, open }) {
         <button className="home-room" onClick={() => go("room")}>
           <span className="tape" />
           <span className="room-thumb">
-            <RoomArt interactive={false} />
+            <img src="/room-preview.png" alt="粉色公主房的三维实景预览" />
           </span>
           <span className="activity-label">
-            草莓小屋 <span>↗</span>
+            公主小屋 <span>↗</span>
           </span>
           <small>给生活留一个柔软的角落</small>
         </button>
@@ -307,6 +307,7 @@ function Chat({ messages, draft, setDraft, send, bubble }) {
   );
 }
 export default function App() {
+  const [roomSettings, setRoomSettings] = useState(initialRoomState);
   const [page, setPage] = useState("home"),
     [modal, setModal] = useState(null),
     [bubble, setBubble] = useState("ribbon");
@@ -420,7 +421,9 @@ export default function App() {
           </button>
         )}
         {page === "home" && <Home go={setPage} open={open} />}
-        {page === "room" && <Room />}
+        {page === "room" && (
+          <Room settings={roomSettings} onChange={setRoomSettings} />
+        )}
         {page === "chat" && (
           <Chat {...{ messages, draft, setDraft, send, bubble }} />
         )}
