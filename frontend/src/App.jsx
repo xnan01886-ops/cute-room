@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useReducer } from "react";
 import { APP_CONFIG } from "./config";
 import Room, { initialRoomState } from "./Room";
+import Cafe from "./cafe/Cafe";
+import { cafeReducer, initialCafeState } from "./cafe/game";
 
 const starterMessages = [
   { id: 1, role: "assistant", text: "下午好。这里很安静，我在。" },
@@ -11,10 +13,12 @@ const nav = [
   ["home", "主页", "home"],
   ["chat", "聊天", "chat"],
   ["room", "小屋", "spark"],
+  ["cafe", "咖啡馆", "cup"],
   ["settings", "设置", "settings"],
 ];
 function Icon({ name, size = 22 }) {
   const paths = {
+    cup: "M4 8h12v8a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z M16 9h2a3 3 0 0 1 0 6h-2 M7 3v2 M12 2v3",
     home: "M3 10 12 3l9 7v10H3Z M9 20v-7h6v7",
     chat: "M20 11a8 8 0 0 1-8 8H8l-5 3 1-7a8 8 0 1 1 16-4Z M8 11h.01M12 11h.01M16 11h.01",
     spark: "m12 2 3 7 7 3-7 3-3 7-3-7-7-3 7-3Z",
@@ -308,6 +312,7 @@ function Chat({ messages, draft, setDraft, send, bubble }) {
 }
 export default function App() {
   const [roomSettings, setRoomSettings] = useState(initialRoomState);
+  const [cafeState, cafeDispatch] = useReducer(cafeReducer, initialCafeState);
   const [page, setPage] = useState("home"),
     [modal, setModal] = useState(null),
     [bubble, setBubble] = useState("ribbon");
@@ -423,6 +428,16 @@ export default function App() {
         {page === "home" && <Home go={setPage} open={open} />}
         {page === "room" && (
           <Room settings={roomSettings} onChange={setRoomSettings} />
+        )}
+        {page === "cafe" && (
+          <Cafe
+            state={cafeState}
+            dispatch={cafeDispatch}
+            onShare={(text) => {
+              setDraft(text);
+              setPage("chat");
+            }}
+          />
         )}
         {page === "chat" && (
           <Chat {...{ messages, draft, setDraft, send, bubble }} />
