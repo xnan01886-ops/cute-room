@@ -1,0 +1,558 @@
+.palace-page {
+  --room-accent: #ad6d89;
+  --room-border: #ead7df;
+  color: #765c68;
+  max-width: 1100px;
+  margin: auto;
+}
+.palace-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 0 0 23px;
+}
+.palace-heading .eyebrow {
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+.palace-heading h1 {
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin: 12px 0 9px;
+  line-height: 1.35;
+}
+.palace-heading h1 button {
+  font: 18px sans-serif;
+  margin-left: 10px;
+  color: #bd97a9;
+  vertical-align: middle;
+}
+.palace-heading > div > p:last-child {
+  font-size: 11px;
+  color: #a18a94;
+  margin: 0;
+  line-height: 1.8;
+}
+.palace-seal {
+  width: 74px;
+  height: 80px;
+  flex-shrink: 0;
+  border: 1px solid #ddc3d0;
+  border-radius: 50% 50% 40% 40%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  font:
+    italic 34px Georgia,
+    serif;
+  color: #b8869d;
+  outline: 1px solid #ead6e0;
+  outline-offset: 4px;
+  transform: rotate(7deg);
+}
+.palace-seal span {
+  font: 5px sans-serif;
+  letter-spacing: 1.1px;
+  margin-top: 4px;
+}
+.palace-time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 15px 17px;
+  background: #f7edf1;
+  border: 1px solid var(--room-border);
+  border-radius: 15px 15px 0 0;
+}
+.palace-time > div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.time-symbol {
+  font-size: 27px;
+  color: #b9889f;
+}
+.palace-time strong {
+  display: block;
+  font:
+    22px Georgia,
+    serif;
+  color: #926078;
+  letter-spacing: 1px;
+}
+.palace-time > div:first-child div > span {
+  display: block;
+  font-size: 9px;
+  margin-top: 4px;
+  color: #a18291;
+}
+.time-presets {
+  display: flex;
+  gap: 4px;
+  background: #fff8fb;
+  border-radius: 10px;
+  padding: 4px;
+}
+.time-presets button {
+  padding: 8px 13px;
+  font-size: 11px;
+  border-radius: 7px;
+  color: #987789;
+  white-space: nowrap;
+}
+.time-presets button[aria-pressed="true"] {
+  background: #d8b3c6;
+  color: #694155;
+}
+.cycle-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.palace-page input[type="checkbox"] {
+  accent-color: #b47794;
+}
+.time-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 7px 18px 12px;
+  background: #f7edf1;
+  border: 1px solid var(--room-border);
+  border-top: 0;
+  border-radius: 0 0 15px 15px;
+  font-size: 8px;
+  color: #ad8c9c;
+  letter-spacing: 1px;
+}
+.time-slider input {
+  flex: 1;
+  min-width: 0;
+  accent-color: #b7809b;
+  height: 16px;
+  cursor: pointer;
+}
+.palace-stage {
+  position: relative;
+  height: clamp(440px, 56vw, 640px);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-top: 17px;
+  border: 1px solid #f1e3e6;
+  background: #f8ece8;
+}
+.palace-canvas {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+  min-width: 0;
+}
+.palace-canvas canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  outline-offset: -5px;
+}
+.scene-label {
+  position: absolute;
+  left: 18px;
+  top: 19px;
+  pointer-events: none;
+  font-size: 7px;
+  letter-spacing: 2px;
+  color: #aa8196;
+}
+.scene-label > span {
+  font-size: 16px;
+  margin-right: 4px;
+}
+.view-controls {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  border-radius: 19px;
+  padding: 7px;
+  background: #fff9fbc9;
+  backdrop-filter: blur(9px);
+  border: 1px solid #fff;
+}
+.view-controls button {
+  width: 34px;
+  height: 33px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: #fff8fb;
+  font-size: 20px;
+  color: #a6748d;
+  border: 1px solid #f0dce6;
+}
+.view-controls button:last-child {
+  font-size: 10px;
+}
+.view-controls span {
+  height: 1px;
+  background: #ebd7e2;
+}
+.view-controls button:hover {
+  background: #efd6e2;
+}
+.remote-toggle {
+  position: absolute;
+  left: 16px;
+  bottom: 48px;
+  padding: 10px 14px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  background: #fff8fce8;
+  border: 1px solid #e9d2df;
+  border-radius: 12px;
+  color: #a36b87;
+  box-shadow: 0 4px 18px #92647e0b;
+}
+.remote-toggle.selected {
+  background: #efd9e4;
+}
+.scene-options {
+  position: absolute;
+  bottom: 15px;
+  left: 18px;
+  right: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 9px;
+  color: #967b8c;
+}
+.scene-options label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+.scene-options input {
+  width: 12px;
+  height: 12px;
+  margin: 0;
+}
+.room-feedback {
+  text-align: center;
+  color: #a36e87;
+  font-size: 11px;
+  line-height: 1.8;
+  padding: 16px 10px;
+  min-height: 54px;
+}
+.palace-remote {
+  background: linear-gradient(145deg, #fff8fa, #f7e9ef);
+  border: 1px solid #ebd5df;
+  border-radius: 18px;
+  padding: 17px;
+}
+.remote-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+  gap: 10px;
+}
+.remote-heading .eyebrow {
+  font-size: 8px;
+  margin: 0;
+  letter-spacing: 2px;
+}
+.remote-heading > span {
+  font-size: 9px;
+  color: #aa8898;
+}
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+.device-grid button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 10px;
+  background: #fffafc;
+  border: 1px solid #eddbe3;
+  border-radius: 12px;
+  text-align: left;
+  font-size: 11px;
+}
+.device-grid button[aria-pressed="true"] {
+  background: #ecd3df;
+  border-color: #d1a0b7;
+  color: #8b506e;
+}
+.device-icon {
+  font-size: 23px;
+  color: #c18da5;
+  width: 25px;
+  text-align: center;
+}
+.device-grid small {
+  display: block;
+  font-size: 8px;
+  margin-top: 5px;
+  color: #a18b97;
+}
+.device-grid i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d9cdd4;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.device-grid button[aria-pressed="true"] i {
+  background: #b58099;
+  box-shadow: 0 0 5px #c690a5;
+}
+.palace-help {
+  font-size: 9px;
+  color: #a78c9b;
+  text-align: center;
+  line-height: 2;
+  margin: 17px 0 0;
+}
+.scene-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f9edf1f2;
+  z-index: 2;
+  padding: 30px;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.9;
+}
+.loading-crown {
+  font-size: 55px;
+  color: #c08da5;
+}
+.room-rename {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+.room-rename input {
+  width: 190px;
+  border: 1px solid #dfc2d0;
+  border-radius: 7px;
+  padding: 7px;
+  background: white;
+  font-size: 16px;
+}
+.room-rename button {
+  font-size: 11px;
+  background: #eedce5;
+  padding: 8px;
+  border-radius: 7px;
+}
+.palace-night .scene-label,
+.palace-night .scene-options {
+  color: #e3cbdf;
+}
+.palace-night .palace-stage {
+  border-color: #d6c6d7;
+}
+.room-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.main-paper:has(.palace-page) {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+@media (min-width: 1400px) {
+  .main-paper:has(.palace-page) {
+    padding-left: 38px;
+    padding-right: 38px;
+  }
+}
+@media (max-width: 950px) {
+  .palace-time {
+    gap: 9px;
+    padding: 12px;
+  }
+  .time-presets button {
+    padding: 8px;
+  }
+  .cycle-toggle {
+    font-size: 9px;
+  }
+  .device-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .main-paper:has(.palace-page) {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+}
+@media (max-width: 700px) {
+  .main-paper:has(.palace-page) {
+    padding-left: 17px;
+    padding-right: 17px;
+  }
+  .palace-heading {
+    margin-bottom: 20px;
+  }
+  .palace-heading h1 {
+    font-size: 25px;
+    letter-spacing: 1px;
+  }
+  .palace-heading .eyebrow {
+    font-size: 6px;
+    letter-spacing: 1.4px;
+  }
+  .palace-heading > div > p:last-child {
+    font-size: 9px;
+  }
+  .palace-seal {
+    width: 51px;
+    height: 59px;
+    font-size: 27px;
+  }
+  .palace-seal span {
+    font-size: 4px;
+    letter-spacing: 0.6px;
+  }
+  .palace-time {
+    flex-wrap: wrap;
+    padding: 11px 12px;
+    gap: 11px;
+  }
+  .palace-time strong {
+    font-size: 21px;
+  }
+  .palace-time > div:first-child div > span {
+    font-size: 8px;
+  }
+  .time-presets {
+    margin-left: auto;
+  }
+  .time-presets button {
+    padding: 8px 9px;
+    font-size: 10px;
+  }
+  .cycle-toggle {
+    width: 100%;
+    justify-content: flex-end;
+    font-size: 9px;
+    margin-top: -3px;
+  }
+  .time-slider {
+    padding: 2px 12px 10px;
+    margin-top: 0;
+  }
+  .palace-stage {
+    height: 475px;
+    margin-top: 12px;
+    border-radius: 17px;
+  }
+  .scene-label {
+    top: 14px;
+    left: 13px;
+    font-size: 6px;
+    letter-spacing: 1.3px;
+  }
+  .view-controls {
+    right: 7px;
+    gap: 5px;
+    padding: 5px;
+  }
+  .view-controls button {
+    width: 30px;
+    height: 31px;
+    font-size: 18px;
+  }
+  .view-controls button:last-child {
+    font-size: 9px;
+  }
+  .scene-options {
+    font-size: 8px;
+    left: 12px;
+    right: 10px;
+    gap: 5px;
+    bottom: 14px;
+  }
+  .remote-toggle {
+    left: 12px;
+    bottom: 44px;
+    font-size: 10px;
+    padding: 9px 11px;
+  }
+  .room-feedback {
+    font-size: 10px;
+    padding: 13px 5px;
+    min-height: 47px;
+  }
+  .palace-remote {
+    padding: 13px 10px;
+  }
+  .remote-heading .eyebrow {
+    font-size: 6px;
+    letter-spacing: 1.4px;
+  }
+  .remote-heading > span {
+    font-size: 8px;
+  }
+  .device-grid {
+    gap: 7px;
+  }
+  .device-grid button {
+    padding: 11px 6px;
+    gap: 5px;
+    font-size: 10px;
+  }
+  .device-icon {
+    font-size: 19px;
+    width: 20px;
+  }
+  .device-grid small {
+    font-size: 7px;
+  }
+  .palace-help {
+    font-size: 8px;
+  }
+  .palace-heading h1 button {
+    font-size: 16px;
+    margin-left: 6px;
+  }
+  .room-rename input {
+    width: 155px;
+  }
+  .room-rename button {
+    font-size: 9px;
+    padding: 7px;
+  }
+  .palace-canvas {
+    touch-action: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .palace-canvas {
+    scroll-behavior: auto;
+  }
+}
